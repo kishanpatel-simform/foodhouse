@@ -31,6 +31,13 @@ app.get('/cart', (req, res) => {
         })
         // res.send("Hello")
 })
+app.get('/mealprovider', (req, res) => {
+    res.render('mealprovider', {
+            title: 'This is Admin Page',
+            name: 'Kishan Patel'
+        })
+        //  res.send("Hello")
+})
 
 
 app.listen(port, () => {
