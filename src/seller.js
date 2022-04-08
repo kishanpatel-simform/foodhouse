@@ -4,7 +4,7 @@ const hbs = require("hbs");
 require("./db/mongoose");
 const app = express();
 const port = process.env.PORT || 3001;
-
+const sellerRouter = require("./routes/seller/seller");
 const publicDirectory = path.join(__dirname, "../public");
 const viewPath = path.join(__dirname, "templates/views/seller");
 const partialsPath = path.join(__dirname, "templates/partials/seller");
@@ -15,6 +15,7 @@ app.set("views", viewPath);
 hbs.registerPartials(partialsPath);
 
 app.use(express.static(publicDirectory));
+app.use(sellerRouter);
 
 app.get("/seller", (req, res) => {
 	res.render("index", {
