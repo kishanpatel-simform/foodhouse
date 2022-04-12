@@ -38,6 +38,20 @@ app.get('/mealprovider', (req, res) => {
         })
         //  res.send("Hello")
 })
+app.get('/register', (req, res) => {
+    res.render('register', {
+            title: 'This is Admin Page',
+            name: 'Kishan Patel'
+        })
+        //  res.send("Hello")
+})
+app.get('/login', (req, res) => {
+    res.render('login', {
+            title: 'This is Admin Page',
+            name: 'Kishan Patel'
+        })
+        //  res.send("Hello")
+})
 
 
 app.listen(port, () => {
