@@ -2,21 +2,26 @@ const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
 require("./db/mongoose");
+
 const app = express();
 const port = process.env.PORT || 3001;
-const sellerRouter = require("./routes/seller/seller");
+
+const mealProvidersRouter = require("./routes/mealProviders/mealProviders");
+const usersRouter = require("./routes/users/users");
+const { json } = require("express/lib/response");
+
 const publicDirectory = path.join(__dirname, "../public");
 const viewPath = path.join(__dirname, "templates/views/seller");
 const partialsPath = path.join(__dirname, "templates/partials/seller");
-console.log(__dirname);
-console.log(publicDirectory);
+
 app.set("view engine", "hbs");
 app.set("views", viewPath);
 hbs.registerPartials(partialsPath);
 
 app.use(express.static(publicDirectory));
-app.use(sellerRouter);
-
+app.use(express.json());
+app.use("/mealProviders", mealProvidersRouter);
+app.use("/users", usersRouter);
 app.get("/seller", (req, res) => {
 	res.render("index", {
 		title: "This is Admin Page",

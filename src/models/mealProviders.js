@@ -20,10 +20,10 @@ const mealProvidersSchema = new mongoose.Schema({
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		required: true,
-		ref: "userSchema",
+		ref: "users",
 	},
 });
 
-const mealProviders = mongoose.model("mealProviders", mealProvidersSchema);
+const MealProviders = mongoose.model("mealProviders", mealProvidersSchema);
 
-module.exports = mealProviders;
+module.exports = MealProviders;

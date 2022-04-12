@@ -41,7 +41,7 @@ const dishesSchema = new mongoose.Schema(
 		mealProvider: {
 			type: mongoose.Schema.Types.ObjectId,
 			required: true,
-			ref: "mealProvidersSchema",
+			ref: "mealProviders",
 		},
 	},
 

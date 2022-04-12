@@ -15,8 +15,8 @@ const usersSchema = new mongoose.Schema(
 		},
 		contactNumber: {
 			type: Number,
-			min: 10,
-			max: 12,
+			minlength: 10,
+			maxlength: 12,
 			require: true,
 			unique: true,
 		},
@@ -27,7 +27,7 @@ const usersSchema = new mongoose.Schema(
 			unique: true,
 			lowercase: true,
 			validate(value) {
-				if (!validator.isEmail(value)) {
+				if (!validate.isEmail(value)) {
 					throw new Error("invalid Email");
 				}
 			},
@@ -44,7 +44,7 @@ const usersSchema = new mongoose.Schema(
 			type: String,
 			require: false,
 		},
-		Role: {
+		role: {
 			type: String,
 			require: true,
 		},
@@ -53,6 +53,6 @@ const usersSchema = new mongoose.Schema(
 		timestamps: true,
 	}
 );
-const users = mongoose.model("users", usersSchema);
+const Users = mongoose.model("users", usersSchema);
 
-module.exports = users;
+module.exports = Users;
